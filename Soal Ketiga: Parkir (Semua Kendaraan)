@@ -1,0 +1,36 @@
+print("===PARKIR DIRAL STASIUN===")
+def hitung_biaya_parkir (durasi):
+    # tarif untuk dua jam pertama
+    dua_jam_pertama = 3000
+    # tarif per jam setelah tarif dua jam pertama
+    lebih_dari_2_jam = 1500
+    # biaya tambahan jika parkir melebihi 24 jam
+    biaya_tambahan = 10000
+
+    # kondisi perhitungan biaya parkir
+    if durasi <= 2:
+       biaya = dua_jam_pertama 
+    elif durasi > 2:
+       # hampir sama dengan soal kedua, namun tanpa ada perbedaan jenis kendaraan
+       biaya = dua_jam_pertama + (durasi -2) * lebih_dari_2_jam
+    if durasi > 24:
+       biaya = dua_jam_pertama + (durasi-2) * lebih_dari_2_jam + biaya_tambahan
+    
+    # mengembalikan hasil perhitungan
+    return biaya
+
+# input dari pengguna
+try:
+   # meminta input durasi parkir
+   durasi = int(input("Masukkan jam parkir: "))
+   # validasi untuk durasi negatif
+   if durasi < 0:
+      print("Angka tidak valid.")
+   else:
+      # memanggil fungsi untuk menghitung biaya parkir
+      biaya = hitung_biaya_parkir(durasi)
+      # jika berhasil, tampilkan total biaya parkir
+      print(f"Biaya parkir untuk {durasi} jam adalah Rp{biaya}")
+except ValueError:
+      # menangkap kesalahan jika input durasi bukan angka
+      print("Input durasi harus berupa angka.")
